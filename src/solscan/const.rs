@@ -1,0 +1,1 @@
+pub const SOLSCANBASEURL: &str = "https://public-api.solscan.io";
