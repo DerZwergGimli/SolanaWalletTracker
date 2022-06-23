@@ -1,4 +1,6 @@
 pub mod solscan;
 pub mod r#const;
-pub mod r#struct;
+mod structs;
+pub mod toPrint;
+
 
