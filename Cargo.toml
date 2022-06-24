@@ -1,5 +1,5 @@
 [package]
-name = "SolanaWalletTracker"
+name = "solanaWalletTracker"
 version = "0.1.0"
 edition = "2021"
 

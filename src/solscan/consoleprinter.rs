@@ -1,14 +1,13 @@
 use chrono::{DateTime, NaiveDateTime, Utc};
 
-use crate::solana;
 use crate::solana::token_lookup::find_token_symbol;
 use crate::solscan::solscan::load_market_token;
-use crate::solscan::structs::spl_transfer::SplTransfer;
+use crate::solscan::structs::spl_transfer::SplTransferContainer;
 use crate::solscan::structs::token::Token;
 use crate::solscan::structs::transaction::Transaction;
 
 pub async fn print_tokens(transactions: Vec<Token>) {
-    let mut totalUSDT: Vec<f64> = Vec::new();
+    let mut total_usdt: Vec<f64> = Vec::new();
 
     println!("Token-Log: ");
     for (index, token) in transactions.iter().enumerate() {
@@ -16,10 +15,10 @@ pub async fn print_tokens(transactions: Vec<Token>) {
         println!("\t> Address: {:?}", token.token_address);
         println!("\t> Symbol: {:?}", token.token_symbol.as_ref().unwrap_or(&"?".to_string()));
         println!("\t> Amount: {:?}", token.token_amount.ui_amount);
-        totalUSDT.push(load_market_token(token.token_address.as_str()).await.unwrap().price_usdt.unwrap_or(0.0) * token.token_amount.ui_amount);
-        println!("\t> MarketPrice: {:?} USDT", totalUSDT.last().unwrap());
+        total_usdt.push(load_market_token(token.token_address.as_str()).await.unwrap().price_usdt.unwrap_or(0.0) * token.token_amount.ui_amount);
+        println!("\t> MarketPrice: {:?} USDT", total_usdt.last().unwrap());
     }
-    println!("> Total USDT: {:?}", totalUSDT.iter().sum::<f64>());
+    println!("> Total USDT: {:?}", total_usdt.iter().sum::<f64>());
 }
 
 
@@ -35,7 +34,7 @@ pub fn print_transactions(transactions: Vec<Transaction>) {
 }
 
 
-pub fn print_spl_transfers(spl_transfer: SplTransfer) {
+pub fn print_spl_transfers(spl_transfer: SplTransferContainer) {
     println!("SPL-Transfer-Log: ");
     for (index, transfer) in spl_transfer.data.iter().enumerate() {
         println!("{}_Transfer", index);

@@ -1,14 +1,12 @@
 use std::fs;
 use std::io::Read;
 
-use crate::solana::token::{Token, Tokens};
-use crate::solana::token_lookup::TokenLookupError::{UNABLE_TO_LOAD_TOKEN_FILE, UNABLE_TO_SERIALIZE_TOKEN_FILE};
+use crate::solana::token::Tokens;
+use crate::solana::token_lookup::TokenLookupError::UnableToSerializeTokenFile;
 
 #[derive(Debug)]
 enum TokenLookupError {
-    UNABLE_TO_LOAD_TOKEN_FILE,
-    UNABLE_TO_CONVERT_TOKEN_FILE,
-    UNABLE_TO_SERIALIZE_TOKEN_FILE,
+    UnableToSerializeTokenFile,
 }
 
 pub fn find_token_symbol(address: &str) -> String {
@@ -29,7 +27,7 @@ fn load_token_list() -> Result<Tokens, TokenLookupError> {
         Ok(tokens) => { Ok(tokens) }
         Err(_) => {
             error!("Unable to parse Token list");
-            Err(UNABLE_TO_SERIALIZE_TOKEN_FILE)
+            Err(UnableToSerializeTokenFile)
         }
     }
 }

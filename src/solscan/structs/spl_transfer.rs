@@ -1,7 +1,7 @@
 use serde_derive::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct SplTransfer {
+pub struct SplTransferContainer {
     pub total: i64,
     pub data: Vec<Transfer>,
 }
@@ -14,28 +14,35 @@ pub struct Transfer {
     pub signature: Vec<String>,
     #[serde(rename = "changeType")]
     pub change_type: ChangeType,
-    #[serde(rename = "changeAmount")]
-    pub change_amount: i64,
     pub decimals: i64,
+    #[serde(rename = "changeAmount")]
+    pub change_amount: ChangeAmount,
     #[serde(rename = "postBalance")]
     pub post_balance: String,
     #[serde(rename = "preBalance")]
-    pub pre_balance: String,
+    pub pre_balance: ChangeAmount,
     #[serde(rename = "tokenAddress")]
     pub token_address: String,
-    pub symbol: Option<String>,
     #[serde(rename = "blockTime")]
     pub block_time: i64,
     pub slot: i64,
     pub fee: i64,
     pub owner: String,
     pub balance: Balance,
+    pub symbol: Option<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Balance {
     pub amount: String,
     pub decimals: i64,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ChangeAmount {
+    Integer(i64),
+    String(String),
 }
 
 #[derive(Debug, Serialize, Deserialize)]
