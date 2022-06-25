@@ -1,6 +1,7 @@
 pub mod solscan;
 pub mod r#const;
-mod structs;
-pub mod consoleprinter;
+pub mod structs;
+pub mod consolePrinter;
+pub mod helper;
 
 

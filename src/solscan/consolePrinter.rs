@@ -6,11 +6,11 @@ use crate::solscan::structs::spl_transfer::SplTransferContainer;
 use crate::solscan::structs::token::Token;
 use crate::solscan::structs::transaction::Transaction;
 
-pub async fn print_tokens(transactions: Vec<Token>) {
+pub async fn print_tokens(tokens: Vec<Token>) {
     let mut total_usdt: Vec<f64> = Vec::new();
 
     println!("Token-Log: ");
-    for (index, token) in transactions.iter().enumerate() {
+    for (index, token) in tokens.iter().enumerate() {
         println!("{}_Token", index);
         println!("\t> Address: {:?}", token.token_address);
         println!("\t> Symbol: {:?}", token.token_symbol.as_ref().unwrap_or(&"?".to_string()));

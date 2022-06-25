@@ -1,6 +1,6 @@
 use serde_derive::{Deserialize, Serialize};
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Token {
     #[serde(rename = "tokenAddress")]
     pub token_address: String,
@@ -19,7 +19,7 @@ pub struct Token {
     pub token_symbol: Option<String>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct TokenAmount {
     pub amount: String,
     pub decimals: i64,

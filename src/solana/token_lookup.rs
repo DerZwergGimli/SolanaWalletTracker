@@ -1,6 +1,8 @@
 use std::fs;
 use std::io::Read;
 
+use log::error;
+
 use crate::solana::token::Tokens;
 use crate::solana::token_lookup::TokenLookupError::UnableToSerializeTokenFile;
 

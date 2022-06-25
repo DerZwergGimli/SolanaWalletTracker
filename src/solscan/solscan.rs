@@ -1,3 +1,4 @@
+use log::{error, info, warn};
 use reqwest::Error;
 
 use crate::solscan::r#const::SOLSCANBASEURL;
@@ -26,8 +27,10 @@ pub async fn load_account_tokens(account_address: &str) -> Result<Vec<Token>, So
                     //println!("{:?}", data)
                     Ok(data)
                 }
-                Err(_) => {
+                Err(e) => {
                     error!("Unable to serialize json data!");
+                    error!("{:?}",e);
+                    error!("{}", json_data);
                     Err(UnableToSerialize)
                 }
             }
@@ -126,8 +129,9 @@ pub async fn load_market_token(account_address: &str) -> Result<MarketPrice, Sol
                     //println!("{:?}", data)
                     Ok(data)
                 }
-                Err(_) => {
+                Err(e) => {
                     error!("Unable to serialize json data!");
+                    error!("{:?}",e);
                     Err(UnableToSerialize)
                 }
             }

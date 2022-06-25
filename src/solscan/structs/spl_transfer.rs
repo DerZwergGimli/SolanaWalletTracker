@@ -1,4 +1,16 @@
+use std::fmt::{self, Display, Formatter, write};
+
 use serde_derive::{Deserialize, Serialize};
+
+impl Display for ChangeAmount {
+    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::Integer(v) => write!(f, "{}", v),
+            Self::String(v) => write!(f, "{}", v)
+        }
+    }
+}
+
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct SplTransferContainer {
@@ -6,7 +18,7 @@ pub struct SplTransferContainer {
     pub data: Vec<Transfer>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Transfer {
     #[serde(rename = "_id")]
     pub id: String,
@@ -18,7 +30,7 @@ pub struct Transfer {
     #[serde(rename = "changeAmount")]
     pub change_amount: ChangeAmount,
     #[serde(rename = "postBalance")]
-    pub post_balance: String,
+    pub post_balance: ChangeAmount,
     #[serde(rename = "preBalance")]
     pub pre_balance: ChangeAmount,
     #[serde(rename = "tokenAddress")]
@@ -32,20 +44,20 @@ pub struct Transfer {
     pub symbol: Option<String>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Balance {
     pub amount: String,
     pub decimals: i64,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(untagged)]
 pub enum ChangeAmount {
     Integer(i64),
     String(String),
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub enum ChangeType {
     #[serde(rename = "dec")]
     Dec,
