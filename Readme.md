@@ -10,6 +10,8 @@ This repo contains a Discord Wallet Tracker.
   of this bot can be found
   here: [discord_solana_wallet_tracker (python)](https://github.com/DerZwergGimli/discord_solana_wallet_tracker)
 
+![bot_icon](icon.png.drawio)
+
 ## Features
 
 - Easy to SetUp with Docker and Environment Variables.
@@ -21,19 +23,17 @@ This repo contains a Discord Wallet Tracker.
 
 ## Commands
 
-| command      | description                       |
-|--------------|-----------------------------------|
-| ~help        | Shows this message                | 
-| ~address     | Prints the wallet-address         | 
-| ~domain      | Prints the wallet-domain          | 
-| ~solscan     | Prints a link to solcan.io        | 
-| ~solanaBeach | Prints a link to solanabeach.io   | 
-| ~step        | Prints a link to step.finance     |
-| ~tokens      | Prints a list of tokens           |
+| command      | description                     |
+|--------------|---------------------------------|
+| ~help        | Shows a help-message            | 
+| ~address     | Prints the wallet-address       | 
+| ~domain      | Prints the wallet-domain        | 
+| ~solscan     | Prints a link to solcan.io      | 
+| ~solanaBeach | Prints a link to solanabeach.io | 
+| ~step        | Prints a link to step.finance   |
+| ~tokens      | Prints a list of tokens         |
 
 ## Environment Variables
-
-❗
 
 ```
 BOT_PREFIX=~
