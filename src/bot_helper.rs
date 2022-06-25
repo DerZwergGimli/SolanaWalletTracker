@@ -54,18 +54,32 @@ impl EventHandler for Handler {
         let ctx = Arc::new(ctx);
 
         if !self.is_loop_running.load(Ordering::Relaxed) {
+            // Update Name (USDT Value)
             let ctx1 = Arc::clone(&ctx);
             tokio::spawn(async move {
                 loop {
-                    // MAIN LOOP
-                    warn!("Running LOOP");
-                    //Fetch DATA
-                    // > Fetch Price Data of Wallet
+                    warn!("Running UpdateName LOOP");
+
                     let total_usdt = get_wallet_balance_total().await;
                     let name_text: String = format!("💰 {:.2} 💰 ", total_usdt);
 
+                    //DISPLAY DATA
+                    for _guild in _guilds.iter() {
+                        match _guild.edit_nickname(&ctx1.http, Some(name_text.as_str())).await {
+                            Ok(_) => { info!("Changed Bot nickname!") }
+                            Err(_) => { error!("Unable to change bot nickname!") }
+                        };
+                    }
+                    tokio::time::sleep(Duration::from_secs(env::var("LOOP_UPDATE_NAME_SLEEP").unwrap_or("10".to_string()).parse::<u64>().unwrap())).await;
+                }
+            });
 
-                    // > Fetch recent transactions
+            // Update TXs
+            let ctx2 = Arc::clone(&ctx);
+            tokio::spawn(async move {
+                loop {
+                    warn!("Running UpdateTransactions LOOP");
+
                     match get_recent_spl_transfers().await {
                         None => { warn!("No transactions found!"); }
                         Some(mut transfers) => {
@@ -73,23 +87,13 @@ impl EventHandler for Handler {
 
                             for mut transfer in transfers.into_iter().rev() {
                                 if transfer.symbol.as_ref().unwrap_or(&find_token_symbol(transfer.token_address.as_str())).contains("USDC") {
-                                    Self::post_tx_message(Arc::clone(&ctx), &transfer, env::var("TRANSACTION_USDC_CHANNEL_ID").unwrap().parse::<u64>().unwrap_or(0)).await;
+                                    Self::post_tx_message(Arc::clone(&ctx2), &transfer, env::var("TRANSACTION_USDC_CHANNEL_ID").unwrap().parse::<u64>().unwrap_or(0)).await;
                                 }
-                                Self::post_tx_message(Arc::clone(&ctx), &transfer, env::var("TRANSACTION_CHANNEL_ID").unwrap().parse::<u64>().unwrap_or(0)).await;
+                                Self::post_tx_message(Arc::clone(&ctx2), &transfer, env::var("TRANSACTION_CHANNEL_ID").unwrap().parse::<u64>().unwrap_or(0)).await;
                             }
                         }
                     };
-
-                    //DISPLAY DATA
-                    for _guild in _guilds.iter() {
-                        match _guild.edit_nickname(&ctx.http, Some(name_text.as_str())).await {
-                            Ok(_) => { info!("Changed Bot nickname!") }
-                            Err(_) => { error!("Unable to change bot nickname!") }
-                        };
-                    }
-                    //log_system_load(Arc::clone(&ctx1)).await;
-                    warn!("Done Fetching DATA... Going sleep");
-                    tokio::time::sleep(Duration::from_secs(10)).await;
+                    tokio::time::sleep(Duration::from_secs(env::var("LOOP_UPDATE_TX_SLEEP").unwrap_or("10".to_string()).parse::<u64>().unwrap())).await;
                 }
             });
 

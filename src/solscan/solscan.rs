@@ -53,8 +53,10 @@ pub async fn load_account_transactions(account_address: &str, limit: i32) -> Res
                     //println!("{:?}", data)
                     Ok(data)
                 }
-                Err(_) => {
+                Err(e) => {
                     error!("Unable to serialize json data!");
+                    error!("{:?}",e);
+                    error!("{}", json_data);
                     Err(UnableToSerialize)
                 }
             }
@@ -79,6 +81,7 @@ pub async fn load_spl_transfers(account_address: &str, offset: i32, limit: i32) 
                 Err(e) => {
                     error!("Unable to serialize json data!");
                     error!("{:?}",e);
+                    error!("{}", json_data);
                     Err(UnableToSerialize)
                 }
             }
@@ -101,8 +104,10 @@ pub async fn load_spl_transfers_timebased(account_address: &str, offset: i32, li
                         info!("Successfully serialized json data!");
                         Ok(data)
                     }
-                    Err(_) => {
+                    Err(e) => {
                         error!("Unable to serialize json data!");
+                        error!("{:?}",e);
+                        error!("{}", json_data);
                         Err(UnableToSerialize)
                     }
                 }
@@ -132,6 +137,7 @@ pub async fn load_market_token(account_address: &str) -> Result<MarketPrice, Sol
                 Err(e) => {
                     error!("Unable to serialize json data!");
                     error!("{:?}",e);
+                    error!("{}", json_data);
                     Err(UnableToSerialize)
                 }
             }
