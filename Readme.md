@@ -4,9 +4,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![badge_discord](https://badgen.net/badge/icon/discord?icon=discord&label)
 [![buid-test](https://github.com/DerZwergGimli/SolanaWalletTracker/actions/workflows/main.yml/badge.svg)](https://github.com/DerZwergGimli/SolanaWalletTracker/actions/workflows/main.yml)
-
-![bot_icon](icon.drawio.png)
  
+![bot_icon](icon.drawio.png)
+
 This repo contains a Discord Wallet Tracker.
 
 - Old version
