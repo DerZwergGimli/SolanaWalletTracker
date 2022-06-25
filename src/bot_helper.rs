@@ -152,7 +152,7 @@ pub async fn bot_start() {
 
     // Create the framework
     let framework =
-        StandardFramework::new().configure(|c| c.owners(owners).prefix("~")).group(&GENERAL_GROUP);
+        StandardFramework::new().configure(|c| c.owners(owners).prefix(env::var("BOT_PREFIX").unwrap_or("~".to_string()))).group(&GENERAL_GROUP);
 
     let intents = GatewayIntents::GUILD_MESSAGES
         | GatewayIntents::DIRECT_MESSAGES
