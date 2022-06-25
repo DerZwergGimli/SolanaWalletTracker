@@ -5,6 +5,8 @@
 ![badge_discord](https://badgen.net/badge/icon/discord?icon=discord&label)
 [![buid-test](https://github.com/DerZwergGimli/SolanaWalletTracker/actions/workflows/rust-test.yml/badge.svg)](https://github.com/DerZwergGimli/SolanaWalletTracker/actions/workflows/rust-test.yml)
 [![deploy-to-dockerhub](https://github.com/DerZwergGimli/SolanaWalletTracker/actions/workflows/docker-build.yml/badge.svg)](https://github.com/DerZwergGimli/SolanaWalletTracker/actions/workflows/docker-build.yml)
+![](https://badgen.net/docker/pulls/derzwerggimli//solana_wallet_tracker)
+![](https://badgen.net/docker/size/derzwerggimli//solana_wallet_tracker)
 
 ![bot_icon](icon.drawio.png)
 
