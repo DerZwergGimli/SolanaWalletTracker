@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![badge_discord](https://badgen.net/badge/icon/discord?icon=discord&label)
 [![buid-test](https://github.com/DerZwergGimli/SolanaWalletTracker/actions/workflows/main.yml/badge.svg)](https://github.com/DerZwergGimli/SolanaWalletTracker/actions/workflows/main.yml)
- 
+
 ![bot_icon](icon.drawio.png)
 
 This repo contains a Discord Wallet Tracker.
@@ -51,6 +51,11 @@ WALLET_ADDRESS_DOMAIN=<PLACE-YOUR-SOLANA-WALLET-DOMAIN-HERE>
 ## Development Links
 
 - [QuickType](https://app.quicktype.io/) a generator for Types from JSON
+
+## Development Docker prepare
+
+- `cargo chef prepare --recipe-path recipe.json`
+-
 
 ## Donations
 
