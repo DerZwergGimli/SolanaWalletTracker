@@ -23,4 +23,5 @@ WORKDIR app
 RUN mkdir /usr/local/bin/files
 COPY files/* /usr/local/bin/files/
 COPY --from=builder /app/target/release/solanaWalletTracker /usr/local/bin
+RUN chmod +x /usr/local/bin/solanaWalletTracker
 ENTRYPOINT ["/usr/local/bin/solanaWalletTracker"]
