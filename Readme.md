@@ -49,6 +49,12 @@ WALLET_ADDRESS=<PLACE_YOUR-SOLANA-WALLET-ADDRESS-HERE>
 WALLET_ADDRESS_DOMAIN=<PLACE-YOUR-SOLANA-WALLET-DOMAIN-HERE>
 ```
 
+## Deployment
+
+1) Make sure `doocker` and `docker-compose` is installed on your system.
+2) Copy `docker-compose.yaml.sample` to `docker-compose.yaml`
+3) Change the `enviroment` entries to your according your discord-settings.
+
 ## Development Links
 
 - [QuickType](https://app.quicktype.io/) a generator for Types from JSON

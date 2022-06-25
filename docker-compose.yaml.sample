@@ -1,0 +1,18 @@
+version: "3"
+services:
+  solana_wallet_tracker:
+    image: derzwerggimli/solana_wallet_tracker
+    environment:
+      RUST_LOG: "warn"
+      BOT_PREFIX: "~"
+      DISCORD_TOKEN: "<PLACE-YOUR-DISCORD-TOKEN>"
+      LOOP_UPDATE_NAME_SLEEP: 60
+      LOOP_UPDATE_TX_SLEEP: 5
+      TRANSACTION_CHANNEL_ID: <PLACE-YOUR-DISCORD-CHANNEL-ID>
+      TRANSACTION_USDC_CHANNEL_ID: <PLACE-YOUR-OTHER-DISCORD-CHANNEL-ID>
+      WALLET_ADDRESS: "<PLACE_YOUR-SOLANA-WALLET-ADDRESS-HERE>"
+      WALLET_ADDRESS_DOMAIN: "<PLACE-YOUR-SOLANA-WALLET-DOMAIN-HERE>"
+
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
