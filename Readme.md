@@ -6,7 +6,7 @@
 [![buid-test](https://github.com/DerZwergGimli/SolanaWalletTracker/actions/workflows/main.yml/badge.svg)](https://github.com/DerZwergGimli/SolanaWalletTracker/actions/workflows/main.yml)
 
 ![bot_icon](icon.drawio.png)
-
+ 
 This repo contains a Discord Wallet Tracker.
 
 - Old version
