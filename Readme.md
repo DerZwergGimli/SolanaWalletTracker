@@ -56,7 +56,7 @@ WALLET_ADDRESS_DOMAIN=<PLACE-YOUR-SOLANA-WALLET-DOMAIN-HERE>
 ## Development Docker prepare
 
 - `cargo chef prepare --recipe-path recipe.json`
--
+- `docker build image .`
 
 ## Donations
 

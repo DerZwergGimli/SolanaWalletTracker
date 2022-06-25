@@ -87,9 +87,9 @@ impl EventHandler for Handler {
 
                             for mut transfer in transfers.into_iter().rev() {
                                 if transfer.symbol.as_ref().unwrap_or(&find_token_symbol(transfer.token_address.as_str())).contains("USDC") {
-                                    Self::post_tx_message(Arc::clone(&ctx2), &transfer, env::var("TRANSACTION_USDC_CHANNEL_ID").unwrap().parse::<u64>().unwrap_or(0)).await;
+                                    Self::post_tx_message(Arc::clone(&ctx), &transfer, env::var("TRANSACTION_USDC_CHANNEL_ID").unwrap().parse::<u64>().unwrap_or(0)).await;
                                 }
-                                Self::post_tx_message(Arc::clone(&ctx2), &transfer, env::var("TRANSACTION_CHANNEL_ID").unwrap().parse::<u64>().unwrap_or(0)).await;
+                                Self::post_tx_message(Arc::clone(&ctx), &transfer, env::var("TRANSACTION_CHANNEL_ID").unwrap().parse::<u64>().unwrap_or(0)).await;
                             }
                         }
                     };
