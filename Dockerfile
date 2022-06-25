@@ -13,9 +13,6 @@ RUN cargo chef cook --release --recipe-path recipe.json
 COPY . .
 RUN cargo build --release --bin solanaWalletTracker
 
-# We do not need the Rust toolchain to run the binary!
-FROM debian:bullseye-slim AS runtime
-
 # We do need the following deps!
 FROM debian:bullseye-slim AS runtime
 RUN apt-get update
@@ -23,5 +20,7 @@ RUN apt-get install openssl -y
 RUN apt-get install curl -y
 
 WORKDIR app
+RUN mkdir /usr/local/bin/files
+COPY files/* /usr/local/bin/files/
 COPY --from=builder /app/target/release/solanaWalletTracker /usr/local/bin
 ENTRYPOINT ["/usr/local/bin/solanaWalletTracker"]

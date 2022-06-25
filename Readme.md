@@ -40,8 +40,8 @@ This repo contains a Discord Wallet Tracker.
 ```
 BOT_PREFIX=~
 DISCORD_TOKEN=<PLACE-YOUR-DISCORD-TOKEN>
-LOOP_UPDATENAME_SLEEP=60
-LOOP_UPDATETX_SLEEP=5 
+LOOP_UPDATE_NAME_SLEEP=60
+LOOP_UPDATE_TX_SLEEP=5 
 RUST_LOG=error 
 TRANSACTION_CHANNEL_ID=<PLACE-YOUR-DISCORD-CHANNEL-ID>
 TRANSACTION_USDC_CHANNEL_ID=<PLACE-YOUR-OTHER-DISCORD-CHANNEL-ID>
@@ -56,7 +56,7 @@ WALLET_ADDRESS_DOMAIN=<PLACE-YOUR-SOLANA-WALLET-DOMAIN-HERE>
 ## Development Docker prepare
 
 - `cargo chef prepare --recipe-path recipe.json`
-- `docker build image .`
+- `docker image build .`
 
 ## Donations
 
