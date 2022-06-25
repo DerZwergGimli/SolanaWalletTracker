@@ -8,7 +8,7 @@ This repo contains a Discord Wallet Tracker.
 
 - Old version
   of this bot can be found
-  here: [discord_solana_wallet_tracker](https://github.com/DerZwergGimli/discord_solana_wallet_tracker)
+  here: [discord_solana_wallet_tracker (python)](https://github.com/DerZwergGimli/discord_solana_wallet_tracker)
 
 ## Features
 
@@ -33,6 +33,8 @@ This repo contains a Discord Wallet Tracker.
 
 ## Environment Variables
 
+❗
+
 ```
 BOT_PREFIX=~
 DISCORD_TOKEN=<PLACE-YOUR-DISCORD-TOKEN>
@@ -51,7 +53,7 @@ WALLET_ADDRESS_DOMAIN=<PLACE-YOUR-SOLANA-WALLET-DOMAIN-HERE>
 
 ## Donations
 
-If you want to get me a ☕ so I not fall 😴
+If you want to get me a ☕ so I won't 😴
 
 - Solana-Wallet-Address: `BSW9zp3iJUcemTVWN4EThcaF6FxBQqP2wgnapSt1Z5mt`
 - Solana-Wallet-Domain: `coffeeplease.sol    `
